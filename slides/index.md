@@ -406,7 +406,7 @@ Roles are written in JavaScript, TypeScript, and even Python or Bash!
 
 ::::{div .side-by-side}
 
-```{literalinclude} /role.mjs
+```{literalinclude} /plugins/role.mjs
 
 ```
 
@@ -439,7 +439,7 @@ Directives are also written in JavaScript, TypeScript, and even Python or Bash!
 
 ::::{div .side-by-side}
 
-```{literalinclude} /directive.mjs
+```{literalinclude} /plugins/directive.mjs
 
 ```
 
@@ -451,7 +451,7 @@ Life, Laugh, Love
 
 ::::
 
-## 🦸‍♀️ Frontend Anywidgets
+# 🦸‍♀️ JavaScript Anywidgets (✨)
 
 You can create small self-contained JavaScript "anywidgets" for extra interactivity
 
@@ -459,6 +459,21 @@ You can create small self-contained JavaScript "anywidgets" for extra interactiv
 :::{anywidget} https://github.com/jupyter-book/example-js-anywidget/releases/latest/download/widget.mjs
 :::
 ```
+
+## 🦸‍♀️ JavaScript Anywidgets (✨): Community
+
+````{preview}
+```{manim}
+:width: 800
+:height: 300
+
+const circle = new Circle({ color: RED, fillOpacity: 0.3 });
+scene.add(circle);
+await scene.play(new Create(circle));
+await scene.wait(1);
+await scene.play(new FadeOut(circle));
+```
+````
 
 # Using JupyterLab: `jupyterlab-myst`
 

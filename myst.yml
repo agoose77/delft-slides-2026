@@ -14,9 +14,10 @@ project:
     spec: https://mystmd.org/spec/
   plugins:
     - https://raw.githubusercontent.com/stefanv/myst-theme/refs/heads/slides-theme/themes/slides/slides.mjs
-    - ./plugin.mjs
-    - ./role.mjs
-    - ./directive.mjs
+    - ./plugins/plugin.mjs
+    - ./plugins/role.mjs
+    - ./plugins/directive.mjs
+    - ./plugins/manim.mjs
   # To autogenerate a Table of Contents, run "myst init --write-toc"
   toc:
     - file: slides/index.md
