@@ -1,0 +1,7 @@
+awkward
+numpy
+scipy
+matplotlib
+imageio
+jupyter-server
+ipykernel

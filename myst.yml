@@ -7,9 +7,23 @@ project:
   # keywords: []
   # authors: []
   # github:
+  bibliography: bibliography.bib
+  references:
+    jb: https://jupyterbook.org/
+    guide: https://mystmd.org/guide/
+  plugins:
+    - https://raw.githubusercontent.com/stefanv/myst-theme/refs/heads/slides-theme/themes/slides/slides.mjs
+    - ./plugin.mjs
   # To autogenerate a Table of Contents, run "myst init --write-toc"
+  toc:
+    - file: slides/index.md
+    - file: analysis/nettie-dog-flap-visits.ipynb
+      hidden: true
 site:
-  template: book-theme
-  # options:
+  template: ./slides-theme/
+  options:
+    style: style.css
+    transition: slide
+    slide_number: true
   #   favicon: favicon.ico
   #   logo: site_logo.png

@@ -1,2 +1,4 @@
 # MyST build outputs
 _build
+style.css
+.ipynb_checkpoints/
