@@ -132,7 +132,7 @@ There's another way ...
 
 (slide:superpowers)=
 
-## But first ... MyST's SuperPowers 🦸‍♀️
+## But first ... Jupyter Book's SuperPowers 🦸‍♀️
 
 :::{div #myst-superpowers}
 There are quite a few documentation engines!
@@ -142,7 +142,27 @@ There are quite a few documentation engines!
 - {span .fragment}`Typst`
   :::
 
-{span .fragment}`We think that MyST has certain super-powers that make it stand out...`
+{span .fragment}`We think that Jupyter Book has certain super-powers that make it stand out...`
+
+# 🦸‍♀️ MyST Markdown (✍️): Better Markdown
+
+:::{figure} /media/rich-markup.jpg
+
+:::
+
+## 🦸‍♀️ MyST Markdown (✍️): Better Markdown
+
+A CommonMark derivative that is {span .fragment}`Natural like Markdown` and {span .fragment}`Expressive like Restructured Text (ReST)`.
+
+```{preview .fragment}
+:::{tip}
+We'll show more MyST Markdown during this talk
+:::
+```
+
+:::{div .notes}
+These preview blocks show MyST Markdown source, and what it renders out to.
+:::
 
 # 🦸‍♀️ XRefs (🖇️): Links are Powerful
 
@@ -188,7 +208,7 @@ Here's the earlier equation:
 ![](#my-eqn)
 ```
 
-## Ugly Notebooks 🦢, Beautiful Prose 💫
+## 🦸‍♀️ Embeds (🖨️): Ugly Notebooks 🦢, Beautiful Prose 💫
 
 Let's put 🐕 and 🖇️ and 🖨️ together! {button}`Go to Notebook →<http://localhost:8888/lab/tree/analysis/nettie-dog-flap-visits.ipynb>`
 
@@ -205,6 +225,32 @@ Show what happens when we clear outputs of that cell.
 Using embeds, we can separate the {span .m-text-red-500}`reading of scientific results` from the {span .m-text-green-500}`work that we did to get them`.
 
 These are two different mind-sets!
+
+---
+
+::::{grid} 2
+
+````{preview} analysis.md
+```{code-cell} python3
+import numpy as np
+from matplotlib import pyplot as plt
+
+x = np.arange(512); y = (x - 4)**2 + 2; y.shape
+```
+```{code-cell} python3
+#| label: plot
+plt.figure(); plt.plot(x, y)
+```
+````
+
+```{preview} paper.md
+## Graphs!
+The graph of {math}`y = (x-4)^2 + 2` is as follows:[^from-nb]
+![](#plot)
+[^from-nb]: I ran a notebook to compute this.
+```
+
+::::
 
 # 🦸‍♀️ Execution (⚡): Generate your outputs
 
@@ -283,6 +329,127 @@ project:
 ```
 
 {span .fragment}`This makes it easy to share bibliographies between projects and departments.`
+
+# 🦸‍♀️ Content as Data (💽): The ✨ Under the Hood
+
+Every Jupyter Book is a rich data store, e.g. the MyST Guide:
+
+```{preview}
+![](xref:guide#my-theorem)
+```
+
+## 🦸‍♀️ Content as Data (💽): XRefs (🖇️)
+
+Each Jupyter Book has a [`myst.xref.json`](https://mystmd.org/guide/myst.xref.json):
+
+```{iframe} https://mystmd.org/guide/myst.xref.json
+
+```
+
+## 🦸‍♀️ Content as Data (💽): Pages (📄)
+
+Every page has its own structured representation, e.g. [`proofs-and-theorems`](https://mystmd.org/guide/proofs-and-theorems.json). Just add `.json`:
+
+```{iframe} https://mystmd.org/guide/proofs-and-theorems.json
+
+```
+
+## 🦸‍♀️ Content as Data (💽): Pages (📄)
+
+```{code-cell .side-by-side} python3
+import urllib.request, json, pprint
+with urllib.request.urlopen(
+    "https://mystmd.org/guide/proofs-and-theorems.json"
+) as page:
+    data = json.load(page)
+
+def walk(tree):
+    for child in tree.get("children", []):
+        yield child
+        yield from walk(child)
+
+for node in walk(data["mdast"]):
+    if node.get("identifier") == "my-theorem" and node["type"] == "proof":
+        pprint.pprint(node)
+```
+
+## 🦸‍♀️ Content as Data (💽): MyST Sandbox
+
+```{iframe} https://mystmd.org/sandbox?tab=ast&myst=VABoAGUAIABjAGEAdAAgAF8AcwBhAHQAXwAgAG8AbgAgAHQAaABlACAAKgAqAG0AYQB0ACoAKgA%3D
+
+```
+
+## 🦸‍♀️ Content as Data (💽): MyST Spec
+
+Jupyter Book supports MyST Markdown as an input.
+
+It outputs MyST AST, [governed by a spec](xref:spec#flowcontent).
+
+# 🦸‍♀️ Extensible Syntax (🧩): Roles
+
+Jupyter Book makes it easy to add new roles.
+
+:::{note} Reminder!
+A `role` is a small piece of inline MyST Markdown markup of the form
+
+```markdown
+{role-name}`role-content`
+```
+
+:::
+
+You might want to do this to make your documents easier to read and write.
+
+## 🦸‍♀️ Extensible Syntax (🧩): Adding a Role
+
+Roles are written in JavaScript, TypeScript, and even Python or Bash!
+
+::::{div .side-by-side}
+
+```{literalinclude} /role.mjs
+
+```
+
+```{preview}
+{life}`I always wondered, why is the meaning of life {}?`
+```
+
+::::
+
+## 🦸‍♀️ Extensible Syntax (🧩): Directives
+
+Adding new directives is just as easy.
+
+::::{note} Reminder!
+A `directive` is a piece of block-level MyST Markdown markup of the form
+
+```markdown
+:::{directive-name} direcive-arg
+:directive-option: value
+
+directive-body
+:::
+```
+
+::::
+
+## 🦸‍♀️ Extensible Syntax (🧩): Adding a Direcive
+
+Directives are also written in JavaScript, TypeScript, and even Python or Bash!
+
+::::{div .side-by-side}
+
+```{literalinclude} /directive.mjs
+
+```
+
+```{preview}
+:::{legit-quote}
+Life, Laugh, Love
+:::
+```
+
+::::
 
 # Thank you
 

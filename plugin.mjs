@@ -1,7 +1,10 @@
 const previewDirective = {
   name: "preview",
   doc: "Preview in-build content.",
-
+  arg: {
+    type: String,
+    doc: "Filename",
+  },
   body: {
     type: String,
     doc: "The content to render",
@@ -12,7 +15,12 @@ const previewDirective = {
   run(data, vfile, ctx) {
     console.log(data.body, ctx);
     const { children } = ctx.parseMyst(data.body);
-    const code = { type: "code", lang: "markdown", value: data.body };
+    const code = {
+      type: "code",
+      lang: "markdown",
+      value: data.body,
+      filename: data.arg,
+    };
     const result = {
       type: "div",
       children: children,
