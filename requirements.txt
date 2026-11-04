@@ -5,3 +5,8 @@ matplotlib
 imageio
 jupyter-server
 ipykernel
+jupyterlab-myst
+jupytext
+
+ipywidgets
+sympy

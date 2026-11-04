@@ -286,7 +286,7 @@ Tools like Pixi _can_ be set-up to create separate environments with separate ke
 
 ## 🦸‍♀️ Execution (⚡): Use Remote Executors
 
-You can [run your book execution remotely](xref:guide/execute-notebooks#manually-launch-a-jupyter-server) on a BinderHub or JupyterHub!
+You can [run your book execution remotely](xref:guide/execute-notebooks#manually-launch-a-jupyter-server) on a BinderHub or JupyterHub! {button}`Launch on MyBinder.org<https://mybinder.org/v2/gh/agoose77/delft-slides-2026/requirements-v1>`
 
 ```bash
 JUPYTER_BASE_URL=xxx JUPYTER_TOKEN=yyy jupyter book start --execute
@@ -450,6 +450,64 @@ Life, Laugh, Love
 ```
 
 ::::
+
+## 🦸‍♀️ Frontend Anywidgets
+
+You can create small self-contained JavaScript "anywidgets" for extra interactivity
+
+```{preview}
+:::{anywidget} https://github.com/jupyter-book/example-js-anywidget/releases/latest/download/widget.mjs
+:::
+```
+
+# Using JupyterLab: `jupyterlab-myst`
+
+Jupyter Book has some early support for JupyterLab. It can:
+
+- Render `admonitions`
+- Handle in-page XRefs
+- Display figures
+- Show DOI references and footnotes
+
+{button}`See an example<http://localhost:8888/lab/tree/analysis/inline-interactivity.ipynb>`
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2_SCb0BI42GY3yWm2gzVkh1nmJGVWE6QC0WUk6fpTnw&s=10)
+
+## Using JupyterLab: 🧭 Where We're Going
+
+There is lots that `jupyterlab-myst` can't do.
+
+We want to improve this! {button}`See a prototype`
+
+# Project Timeline
+
+:::{image} /media/timeline.svg
+:width: 1024px
+:::
+
+manim
+
+# How Jupyter Book Works 🛠️
+
+## Life of a Jupyter Book Project
+
+:::{image} /media/life-myst-markdown.svg
+:width: 1024px
+:::
+
+## Per-document AST are Transformed
+
+:::{image} /media/per-document-ast.svg
+:width: 1024px
+:::
+
+## The Result is JSON!
+
+:::{image} /media/myst-site-build.svg
+:width: 1024px
+:::
+
+# Confusing Points 🙁
 
 # Thank you
 
