@@ -13,7 +13,7 @@ project:
     guide: https://mystmd.org/guide/
     spec: https://mystmd.org/spec/
   plugins:
-    - https://raw.githubusercontent.com/stefanv/myst-theme/refs/heads/slides-theme/themes/slides/slides.mjs
+    - https://github.com/agoose77/delft-slides-2026/releases/download/slides-theme/slides.mjs
     - ./plugins/plugin.mjs
     - ./plugins/role.mjs
     - ./plugins/directive.mjs
@@ -24,7 +24,7 @@ project:
     - file: analysis/nettie-dog-flap-visits.ipynb
       hidden: true
 site:
-  template: ./slides-theme/
+  template: https://github.com/agoose77/delft-slides-2026/releases/download/slides-theme/slides.zip
   options:
     style: style.css
     transition: slide
